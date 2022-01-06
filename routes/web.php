@@ -26,10 +26,10 @@ Route::get('/test', function () {
 });
 
 Route::get('/setHot', function () {
-    // dd($_GET);
+    // dd(intval($_GET['t']));
     $database = app('firebase.database');
     $database->getReference('data/record1')
-        ->update(['HotBound' => $_GET['t']]);
+        ->update(['HotBound' => intval($_GET['t'])]);
     return response('ok', 204);
 });
 
@@ -37,6 +37,6 @@ Route::get('/setCold', function () {
     // dd($_GET);
     $database = app('firebase.database');
     $database->getReference('data/record1')
-        ->update(['ColdBound' => $_GET['t']]);
+        ->update(['ColdBound' => intval($_GET['t'])]);
     return response('ok', 204);
 });
