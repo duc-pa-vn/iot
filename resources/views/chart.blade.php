@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="shortcut icon" href="/Logo_Hust.png" />
+    <title>Bioinformatics</title>
     <style>
         .grid {
             grid-template-columns: 200px auto;
