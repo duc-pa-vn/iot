@@ -103,7 +103,7 @@
     var cnt = 0;
 
     function getData() {
-        axios.get('http://127.0.0.1:8080/getData')
+        axios.get("{{env('APP_URL')}}"+':'+"{{env('APP_PORT')}}"+'/getData')
             .then(function(response) {
                 // handle success
                 Plotly.extendTraces(
@@ -147,7 +147,7 @@
 <script>
     function setHot() {
         var temp = document.getElementById('hot').value;
-        axios.get('http://127.0.0.1:8080/setHot?t=' + parseInt(temp))
+        axios.get("{{env('APP_URL')}}"+':'+"{{env('APP_PORT')}}"+'/setHot?t=' + parseInt(temp))
             .then(function(response) {
                 console.log(temp)
             })
@@ -162,7 +162,7 @@
 
     function setCold() {
         var temp = document.getElementById('cold').value;
-        axios.get('http://127.0.0.1:8080/setCold?t=' + temp)
+        axios.get("{{env('APP_URL')}}"+':'+"{{env('APP_PORT')}}"+'/setCold?t=' + temp)
             .then(function(response) {
 
             })
