@@ -14,15 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/test', function () {
+    return view('chart');
+});
+
+Route::get('/', function () {
+    return view('two-chart');
+});
+
 Route::get('/getData', function () {
     // dd(1);
     $database = app('firebase.database');
     $value = $database->getReference('data')->getValue();
     return response()->json($value);
-});
-
-Route::get('/test', function () {
-    return view('chart');
 });
 
 Route::get('/setHot', function () {
