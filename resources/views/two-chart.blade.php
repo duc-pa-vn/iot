@@ -140,6 +140,23 @@
                     </div>
                     <!--/Metric Card-->
                 </div>
+                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
+                    <!--Metric Card-->
+                    <div class="bg-white border rounded shadow p-2">
+                        <div class="flex flex-row items-center">
+                            <div class="flex-shrink pr-4">
+                                <div class="rounded p-3 bg-green-400"><i class="fas fa-thermometer-three-quarters fa-2x fa-fw fa-inverse"></i></div>
+                            </div>
+                            <div class="flex-1 text-right md:text-center">
+                                <label for="hot" class="font-bold uppercase text-gray-500">Status:</label><span id="status" class="font-bold uppercase text-gray-500">?</span>
+                                <div class="flex">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/Metric Card-->
+                </div>
             </div>
 
             <!--Divider-->
@@ -276,8 +293,10 @@
                     var oldCold = parseInt(document.getElementById('oldCold').textContent)
                     var newHot = parseInt(response.data.record1.HotBound)
                     var newCold = parseInt(response.data.record1.ColdBound)
+                    var status = response.data.record1.Status
                     if (newHot != oldHot) document.getElementById('oldHot').innerHTML = newHot.toString();
                     if (newCold != oldCold) document.getElementById('oldCold').innerHTML = newCold.toString();
+                    document.getElementById('status').innerHTML = status;
                 })
 
                 .catch(function(error) {
