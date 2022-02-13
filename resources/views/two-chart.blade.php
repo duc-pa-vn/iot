@@ -108,7 +108,7 @@
                                 <div class="rounded p-3 bg-blue-400"><i class="fa fa-snowflake fa-2x fa-fw fa-inverse"></i></div>
                             </div>
                             <div class="flex-1 text-right md:text-center">
-                                <label for="cold" class="font-bold uppercase text-gray-500">Cold bound:</label><span id="oldCold" class="font-bold uppercase text-gray-500">0</span>
+                                <label for="cold" class="font-bold uppercase text-gray-500">Cold bound: </label><span id="oldCold" class="font-bold uppercase text-gray-500">0</span>
                                 <div class="flex">
                                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="cold" name="cold" placeholder="Set cold bound">
                                     <button class="ml-2 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" onclick="setCold()">
@@ -128,7 +128,7 @@
                                 <div class="rounded p-3 bg-yellow-400"><i class="fas fa-sun fa-2x fa-fw fa-inverse"></i></div>
                             </div>
                             <div class="flex-1 text-right md:text-center">
-                                <label for="hot" class="font-bold uppercase text-gray-500">Hot bound:</label><span id="oldHot" class="font-bold uppercase text-gray-500">0</span>
+                                <label for="hot" class="font-bold uppercase text-gray-500">Hot bound: </label><span id="oldHot" class="font-bold uppercase text-gray-500">0</span>
                                 <div class="flex">
                                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="hot" name="hot" placeholder="Set hot bound">
                                     <button class="ml-2 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded inline-block" onclick="setHot()">
@@ -148,7 +148,7 @@
                                 <div class="rounded p-3 bg-green-400"><i class="fas fa-thermometer-three-quarters fa-2x fa-fw fa-inverse"></i></div>
                             </div>
                             <div class="flex-1 text-right md:text-center">
-                                <label for="hot" class="font-bold uppercase text-gray-500">Status:</label><span id="status" class="font-bold uppercase text-gray-500">?</span>
+                                <label for="hot" class="font-bold uppercase text-gray-500">Status: </label><span id="status" class="font-bold uppercase text-gray-500">?</span>
                                 <div class="flex">
                                     
                                 </div>
@@ -293,10 +293,14 @@
                     var oldCold = parseInt(document.getElementById('oldCold').textContent)
                     var newHot = parseInt(response.data.record1.HotBound)
                     var newCold = parseInt(response.data.record1.ColdBound)
-                    var status = response.data.record1.Status
                     if (newHot != oldHot) document.getElementById('oldHot').innerHTML = newHot.toString();
                     if (newCold != oldCold) document.getElementById('oldCold').innerHTML = newCold.toString();
-                    document.getElementById('status').innerHTML = status;
+                    if (parseInt(response.data.record1.Temp) >= (newHot - 2))
+                        document.getElementById('status').innerHTML = 'Hot';
+                    if (parseInt(response.data.record1.Temp) <= (newCold + 2))
+                        document.getElementById('status').innerHTML = 'Cold';
+                    if (parseInt(response.data.record1.Temp) > (newCold + 2) && parseInt(response.data.record1.Temp) < (newHot - 2))
+                        document.getElementById('status').innerHTML = 'Normal';
                 })
 
                 .catch(function(error) {
